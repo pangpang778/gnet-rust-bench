@@ -1,0 +1,21 @@
+[package]
+name = "gnet-rs"
+version = "0.1.0"
+edition = "2021"
+description = "A high-performance, event-driven networking framework for Rust (gnet rewrite)"
+license = "Apache-2.0"
+repository = "https://github.com/pangpang778/gnet-rust-bench"
+
+[dependencies]
+mio = { version = "1.0", features = ["os-ext", "net"] }
+libc = "0.2"
+bytes = "1"
+thiserror = "2"
+socket2 = "0.5"
+
+[dev-dependencies]
+tempfile = "3"
+
+[[example]]
+name = "echo"
+path = "examples/echo.rs"
