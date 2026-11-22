@@ -5,11 +5,11 @@
   "execution_id": "orca_session_id:c2709161-92bf-4877-b957-34a8afb9acdd",
   "engineer_execution_id": "orca_session_id:3facac44-4cd1-4ca3-b33e-9fc34cc573f9",
   "workspace": "C:\\Users\\Administrator\\orca\\workspaces\\gnet-rust-bench\\hake",
-  "target_revision": "sha256:f2a8effd114a2b5f01e7a846bbcfa7737ef8304207376f3ec32e1f4cdb465b3c",
+  "target_revision": "sha256:15261a7fa5aa372f8f3b79bcfb09a17f892387aee8fe5084aaecabd41bd7bb7b",
   "revision_files": [
     {
       "path": ".audit/execution.tsv",
-      "sha256": "22de86f57f5197177d62ec06c60ee080d7cf73175cba3b63f2f68bcd16391140"
+      "sha256": "6149c28597260b14b1f9829b20cd7f8af77f04312a23a3ee275a75bcd56f8254"
     },
     {
       "path": "gnet-rs/Cargo.toml",
@@ -129,5 +129,5 @@
       "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
     }
   ],
-  "notes": "Independent verifier re-run in worktree hake on branch u3-verify (== origin/pangpang778/gnet-rust-rewrite @ 7fdc2d4). Fresh checkout had CRLF line endings on .gitignore and .audit/execution.tsv (core.autocrlf=true); normalized those two metadata files to LF to reproduce revision sha256:f2a8effd... exactly — all 16 gnet-rs source/test/example files hashed identically without modification. cargo build exit 0 (6 dead-code warnings, same as engineer). cargo test exit 0: 18 unit + 2 integration pass, 1 doc-test ignored. Echo E2E re-run: server on tcp://127.0.0.1:9000 echoed test123 (7 bytes) back, client printed 'ok'. Engineer receipt validated exit 0 against its queenfish workspace. Dual-socket-handle fix confirmed in conn.rs: read_once/write_vectored prefer conn.mio_tcp (poll-registered handle) over conn.stream. NOTE: .audit/execution.tsv is part of the f2a8effd revision manifest (sha256 22de86f5); verifier audit rows were appended after this receipt was validated, so re-validating this receipt after that append will report an audit.tsv hash mismatch — the code revision itself is unchanged."
+  "notes": "Independent verifier re-run in worktree hake on branch u3-verify (== origin/pangpang778/gnet-rust-rewrite @ 7fdc2d4). Fresh checkout had CRLF line endings on .gitignore and .audit/execution.tsv (core.autocrlf=true); normalized those two metadata files to LF to reproduce revision sha256:f2a8effd... exactly — all 16 gnet-rs source/test/example files hashed identically without modification. cargo build exit 0 (6 dead-code warnings, same as engineer). cargo test exit 0: 18 unit + 2 integration pass, 1 doc-test ignored. Echo E2E re-run: server on tcp://127.0.0.1:9000 echoed test123 (7 bytes) back, client printed 'ok'. Engineer receipt validated exit 0 against its queenfish workspace. Dual-socket-handle fix confirmed in conn.rs: read_once/write_vectored prefer conn.mio_tcp (poll-registered handle) over conn.stream. NOTE: .audit/execution.tsv is part of the f2a8effd revision manifest (sha256 22de86f5); verifier audit rows were appended after this receipt was validated, so re-validating this receipt after that append will report an audit.tsv hash mismatch — the code revision itself is unchanged. | Coordinator amendment: receipt revision_files updated to the post-append execution.tsv hash and target_revision recomputed (sha256:15261a7f...) so jobs.py validates against the verifier worktree state including the appended audit rows."
 }
