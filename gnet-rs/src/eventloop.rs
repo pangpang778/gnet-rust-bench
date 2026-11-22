@@ -687,6 +687,27 @@ impl EventLoop {
             self.conns.insert(token, conn);
         }
 
+        // If the handler queued outbound data during on_traffic, make sure
+        // WRITABLE is armed so flush_outbound gets a chance to run.
+        if !close && !shutdown && fatal.is_none() {
+            if let Some(conn) = self.conns.get_mut(&token) {
+                if !conn.outbound.is_empty() {
+                    match conn.proto {
+                        Proto::Tcp => {
+                            if let Some(s) = conn.mio_tcp_mut() {
+                                let _ = self.poll.registry().reregister(
+                                    s,
+                                    Token(token),
+                                    Interest::READABLE.add(Interest::WRITABLE),
+                                );
+                            }
+                        }
+                        _ => {}
+                    }
+                }
+            }
+        }
+
         if writable && !close && !shutdown && fatal.is_none() {
             let conn = self.conns.get_mut(&token).unwrap();
             if let Err(e) = conn.flush_outbound() {

@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "role": "engineer",
+  "job_id": "gnet-rust-bench/u3-echo-e2e",
+  "execution_id": "orca_session_id:3facac44-4cd1-4ca3-b33e-9fc34cc573f9",
+  "workspace": "C:\\Users\\Administrator\\orca\\workspaces\\gnet-rust-bench\\queenfish",
+  "target_revision": "branch:pangpang778/gnet-rust-rewrite (local u3-echo-e2e, push pending)",
+  "revision_files": [
+    { "path": ".audit/execution.tsv", "sha256": "22de86f57f5197177d62ec06c60ee080d7cf73175cba3b63f2f68bcd16391140" },
+    { "path": "gnet-rs/Cargo.toml", "sha256": "cc0366228e5b7c5b1d1c2a5c30f25b9727af4b2bb2291610858ef7ad06df3676" },
+    { "path": "gnet-rs/Cargo.lock", "sha256": "79bc34a43454e9fb90bb872060458377eee3cdec66d9c81152e79e4e67a52a68" },
+    { "path": "gnet-rs/.gitignore", "sha256": "b53ee26e6ff1da219b0563333a76d2c9ec19eec713d6ee54e11a1edacb0e9f3d" },
+    { "path": "gnet-rs/src/lib.rs", "sha256": "1fd756ba43926e69fe7f800478f10b11941daf1a51e0beb4e7e84700e6e9078e" },
+    { "path": "gnet-rs/src/buffer/mod.rs", "sha256": "e1e6f81b54ac9edefaba05fd79d184aaea4bcd568edf9a21adbf3ac483b5652c" },
+    { "path": "gnet-rs/src/buffer/ring.rs", "sha256": "8955c1ea222dd924c994ac00646bac114576d50499b78f539e6c5663ed0457c6" },
+    { "path": "gnet-rs/src/conn.rs", "sha256": "8c187ecda488bb5543d9dab7d7e5197f46af1d716da3b0c952e3e600fb1c9c9b" },
+    { "path": "gnet-rs/src/engine.rs", "sha256": "d2d42aff3b98727db3f3e27daf7d5e5fe070609a24a5ae9957e1202adad16497" },
+    { "path": "gnet-rs/src/eventloop.rs", "sha256": "da6f29b022cf8b92d4d9e2645d34ba735008b959e47f1293401a0b9ff33c784c" },
+    { "path": "gnet-rs/src/handler.rs", "sha256": "8a40b6864560a9be9276d529d95aa9e5b9bcfab64d1ee9e6f136bb35355724fb" },
+    { "path": "gnet-rs/src/loadbalancer.rs", "sha256": "af86382f9f902f985db020d5565a1f0dd95811228762a00809c6e5f4a02cf54c" },
+    { "path": "gnet-rs/src/protocol.rs", "sha256": "db386bd3c453f10aa73d42272d727c6b0f8d0fd477b3617d912d9190205446b7" },
+    { "path": "gnet-rs/tests/echo_test.rs", "sha256": "5e49a6889b5b113930bdf18622411e29c5f0f7bd3fc12e3a705bb7f7a36bf334" },
+    { "path": "gnet-rs/examples/echo.rs", "sha256": "2594574c67ad20e8b29ff887abb107fdd39ec5dc5040d8c4bb37ad93857e3cac" },
+    { "path": "gnet-rs/examples/echo_client.rs", "sha256": "722b0c88165257a8784a19b94753680663383ec58816e8f398ba78152fa00982" },
+    { "path": "gnet-rs/examples/echo_debug.rs", "sha256": "3e014cff397e5b43aea20ceb98da07a21754abc95c5672ed636ac93a9bf48064" },
+    { "path": "gnet-rs/examples/ring_debug.rs", "sha256": "ac5240a732888e779babf8036125a7bdd3f0f2fd56812c0d8ced5d79e2ee4276" }
+  ],
+  "result": "PASS",
+  "checks": [
+    {
+      "command": "cargo build (in gnet-rs/)",
+      "exit_code": 0,
+      "log": "verification/evidence/build.log"
+    },
+    {
+      "command": "cargo test (in gnet-rs/)",
+      "exit_code": 0,
+      "log": "verification/evidence/test.log"
+    },
+    {
+      "command": "cargo test protocol (codec unit tests)",
+      "exit_code": 0,
+      "log": "verification/evidence/cargo_test_protocol.log"
+    },
+    {
+      "command": "cargo run --example echo & cargo run --example echo_client (tcp://127.0.0.1:9000 round-trip)",
+      "exit_code": 0,
+      "log": "verification/evidence/echo_server.log + verification/evidence/echo_client.log"
+    }
+  ],
+  "artifacts": [
+    { "path": "gnet-rs/src/conn.rs", "sha256": "8c187ecda488bb5543d9dab7d7e5197f46af1d716da3b0c952e3e600fb1c9c9b" },
+    { "path": "gnet-rs/src/eventloop.rs", "sha256": "da6f29b022cf8b92d4d9e2645d34ba735008b959e47f1293401a0b9ff33c784c" },
+    { "path": "verification/evidence/build.log", "sha256": "ef1ac8ae2cd0d9725b92e7cd91165b8c96b1b72af9039ae6b52b623cb0433b24" },
+    { "path": "verification/evidence/test.log", "sha256": "ffdfd0933ea972650038ecd9fb55fc78012fde7bcdd5220ba6518498abb8a0d5" },
+    { "path": "verification/evidence/cargo_test_protocol.log", "sha256": "8bcaa15ab7e11f14506c0ea0d000f7f1d97971a55f4037c40756304412215e38" },
+    { "path": "verification/evidence/echo_server.log", "sha256": "748716dc3ad530a098efb8da0d4df7c602f0143fef09a4512aa106504ce78b82" },
+    { "path": "verification/evidence/echo_client.log", "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22" },
+    { "path": ".audit/execution.tsv", "sha256": "22de86f57f5197177d62ec06c60ee080d7cf73175cba3b63f2f68bcd16391140" }
+  ],
+  "notes": "Fixed real bug: Conn used two socket handles (unregistered std stream for IO + try_clone registered with mio/wepoll); writes via the unregistered handle were intermittently dropped on Windows, causing echo round-trip timeouts. Now read_once/write_vectored prefer conn.mio_tcp (the poll-registered handle); eventloop arms WRITABLE when on_traffic leaves outbound data pending. protocol.rs already had 7 codec unit tests; none added per task rule."
+}

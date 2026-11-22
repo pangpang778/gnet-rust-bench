@@ -380,6 +380,9 @@ impl Conn {
                 return s.write(buf);
             }
         }
+        if let Some(s) = self.mio_tcp.as_mut() {
+            return s.write(buf);
+        }
         match &mut self.stream {
             Some(s) => s.write(buf),
             None => Err(io::Error::new(io::ErrorKind::Unsupported, "not a stream")),
@@ -442,6 +445,14 @@ impl Conn {
                     Err(e) => Err(e),
                 };
             }
+        }
+        if let Some(s) = self.mio_tcp.as_mut() {
+            return match s.read(buf) {
+                Ok(0) => Ok((0, true)),
+                Ok(n) => Ok((n, false)),
+                Err(e) if e.kind() == io::ErrorKind::WouldBlock => Ok((0, false)),
+                Err(e) => Err(e),
+            };
         }
         match &mut self.stream {
             Some(s) => match s.read(buf) {
