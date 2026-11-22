@@ -1,0 +1,92 @@
+   Compiling getrandom v0.4.3
+   Compiling cfg-if v1.0.5
+   Compiling once_cell v1.21.4
+   Compiling fastrand v2.5.0
+warning: function `raw_of` is never used
+  --> src\conn.rs:25:4
+   |
+25 | fn raw_of<T: SockHandle>(t: &T) -> RawFd {
+   |    ^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: type alias `RawFd` is never used
+  --> src\engine.rs:17:6
+   |
+17 | type RawFd = RawSocket;
+   |      ^^^^^
+
+warning: function `sock_raw` is never used
+  --> src\engine.rs:20:4
+   |
+20 | fn sock_raw<T: SockHandle>(t: &T) -> RawFd {
+   |    ^^^^^^^^
+
+warning: trait `SockHandle` is never used
+  --> src\engine.rs:23:7
+   |
+23 | trait SockHandle {
+   |       ^^^^^^^^^^
+
+warning: method `udp_std_sock` is never used
+  --> src\eventloop.rs:99:8
+   |
+97 | impl Listener {
+   | ------------- method in this implementation
+98 |     /// For UDP listeners, returns the std socket clone used for per-peer conns.
+99 |     fn udp_std_sock(&self) -> &UdpSocket {
+   |        ^^^^^^^^^^^^
+
+warning: field `waker` is never read
+   --> src\eventloop.rs:129:5
+    |
+121 | pub struct EventLoop {
+    |            --------- field in this struct
+...
+129 |     waker: Arc<Waker>,
+    |     ^^^^^
+
+warning: `gnet-rs` (lib) generated 6 warnings
+   Compiling tempfile v3.27.0
+   Compiling gnet-rs v0.1.0 (C:\Users\Administrator\orca\workspaces\gnet-rust-bench\hake\gnet-rs)
+warning: `gnet-rs` (lib test) generated 6 warnings (6 duplicates)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.52s
+     Running unittests src\lib.rs (target\debug\deps\gnet_rs-1e501357a4c98704.exe)
+
+running 18 tests
+test buffer::ring_tests::ring_peek_partial_wrap ... ok
+test buffer::ring_tests::elastic_discard_across_ring_and_list ... ok
+test buffer::ring_tests::ring_write_read_basic ... ok
+test loadbalancer::tests::source_addr_hash_is_stable ... ok
+test buffer::ring_tests::ring_discard ... ok
+test protocol::tests::length_prefix_too_large ... ok
+test loadbalancer::tests::conn_counts_inc_dec ... ok
+test loadbalancer::tests::least_connections_picks_min ... ok
+test loadbalancer::tests::round_robin_cycles ... ok
+test buffer::ring_tests::ring_grow ... ok
+test buffer::ring_tests::elastic_overflow_to_list ... ok
+test protocol::tests::length_prefix_across_wrap ... ok
+test protocol::tests::length_prefix_partial_header ... ok
+test protocol::tests::length_prefix_roundtrip ... ok
+test buffer::ring_tests::ring_wraparound ... ok
+test protocol::tests::line_codec_across_wrap ... ok
+test protocol::tests::line_codec_basic ... ok
+test protocol::tests::line_codec_crlf_and_partial ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\echo_test.rs (target\debug\deps\echo_test-5aad7b6aae0a75c6.exe)
+
+running 2 tests
+test noop_handler_boots_and_stops ... ok
+test tcp_echo_roundtrip ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.56s
+
+   Doc-tests gnet_rs
+
+running 1 test
+test src\protocol.rs - protocol::LineCodec (line 49) ... ignored
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

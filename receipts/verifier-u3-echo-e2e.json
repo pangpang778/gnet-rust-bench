@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "role": "verifier",
+  "job_id": "gnet-rust-bench/u3-echo-e2e",
+  "execution_id": "orca_session_id:c2709161-92bf-4877-b957-34a8afb9acdd",
+  "engineer_execution_id": "orca_session_id:3facac44-4cd1-4ca3-b33e-9fc34cc573f9",
+  "workspace": "C:\\Users\\Administrator\\orca\\workspaces\\gnet-rust-bench\\hake",
+  "target_revision": "sha256:f2a8effd114a2b5f01e7a846bbcfa7737ef8304207376f3ec32e1f4cdb465b3c",
+  "revision_files": [
+    {
+      "path": ".audit/execution.tsv",
+      "sha256": "22de86f57f5197177d62ec06c60ee080d7cf73175cba3b63f2f68bcd16391140"
+    },
+    {
+      "path": "gnet-rs/Cargo.toml",
+      "sha256": "cc0366228e5b7c5b1d1c2a5c30f25b9727af4b2bb2291610858ef7ad06df3676"
+    },
+    {
+      "path": "gnet-rs/Cargo.lock",
+      "sha256": "79bc34a43454e9fb90bb872060458377eee3cdec66d9c81152e79e4e67a52a68"
+    },
+    {
+      "path": "gnet-rs/.gitignore",
+      "sha256": "b53ee26e6ff1da219b0563333a76d2c9ec19eec713d6ee54e11a1edacb0e9f3d"
+    },
+    {
+      "path": "gnet-rs/src/lib.rs",
+      "sha256": "1fd756ba43926e69fe7f800478f10b11941daf1a51e0beb4e7e84700e6e9078e"
+    },
+    {
+      "path": "gnet-rs/src/buffer/mod.rs",
+      "sha256": "e1e6f81b54ac9edefaba05fd79d184aaea4bcd568edf9a21adbf3ac483b5652c"
+    },
+    {
+      "path": "gnet-rs/src/buffer/ring.rs",
+      "sha256": "8955c1ea222dd924c994ac00646bac114576d50499b78f539e6c5663ed0457c6"
+    },
+    {
+      "path": "gnet-rs/src/conn.rs",
+      "sha256": "8c187ecda488bb5543d9dab7d7e5197f46af1d716da3b0c952e3e600fb1c9c9b"
+    },
+    {
+      "path": "gnet-rs/src/engine.rs",
+      "sha256": "d2d42aff3b98727db3f3e27daf7d5e5fe070609a24a5ae9957e1202adad16497"
+    },
+    {
+      "path": "gnet-rs/src/eventloop.rs",
+      "sha256": "da6f29b022cf8b92d4d9e2645d34ba735008b959e47f1293401a0b9ff33c784c"
+    },
+    {
+      "path": "gnet-rs/src/handler.rs",
+      "sha256": "8a40b6864560a9be9276d529d95aa9e5b9bcfab64d1ee9e6f136bb35355724fb"
+    },
+    {
+      "path": "gnet-rs/src/loadbalancer.rs",
+      "sha256": "af86382f9f902f985db020d5565a1f0dd95811228762a00809c6e5f4a02cf54c"
+    },
+    {
+      "path": "gnet-rs/src/protocol.rs",
+      "sha256": "db386bd3c453f10aa73d42272d727c6b0f8d0fd477b3617d912d9190205446b7"
+    },
+    {
+      "path": "gnet-rs/tests/echo_test.rs",
+      "sha256": "5e49a6889b5b113930bdf18622411e29c5f0f7bd3fc12e3a705bb7f7a36bf334"
+    },
+    {
+      "path": "gnet-rs/examples/echo.rs",
+      "sha256": "2594574c67ad20e8b29ff887abb107fdd39ec5dc5040d8c4bb37ad93857e3cac"
+    },
+    {
+      "path": "gnet-rs/examples/echo_client.rs",
+      "sha256": "722b0c88165257a8784a19b94753680663383ec58816e8f398ba78152fa00982"
+    },
+    {
+      "path": "gnet-rs/examples/echo_debug.rs",
+      "sha256": "3e014cff397e5b43aea20ceb98da07a21754abc95c5672ed636ac93a9bf48064"
+    },
+    {
+      "path": "gnet-rs/examples/ring_debug.rs",
+      "sha256": "ac5240a732888e779babf8036125a7bdd3f0f2fd56812c0d8ced5d79e2ee4276"
+    }
+  ],
+  "result": "PASS",
+  "checks": [
+    {
+      "command": "cargo build (in gnet-rs/, verifier worktree hake)",
+      "exit_code": 0,
+      "log": "verification/evidence/verifier-build.log"
+    },
+    {
+      "command": "cargo test (in gnet-rs/, verifier worktree hake)",
+      "exit_code": 0,
+      "log": "verification/evidence/verifier-test.log"
+    },
+    {
+      "command": "cargo run --example echo (background) & cargo run --example echo_client (tcp://127.0.0.1:9000 round-trip, verifier re-run)",
+      "exit_code": 0,
+      "log": "verification/evidence/verifier-echo_server.log"
+    },
+    {
+      "command": "echo_client stdout (round-trip result 'ok')",
+      "exit_code": 0,
+      "log": "verification/evidence/verifier-echo_client.log"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "gnet-rs/src/conn.rs",
+      "sha256": "8c187ecda488bb5543d9dab7d7e5197f46af1d716da3b0c952e3e600fb1c9c9b"
+    },
+    {
+      "path": "gnet-rs/src/eventloop.rs",
+      "sha256": "da6f29b022cf8b92d4d9e2645d34ba735008b959e47f1293401a0b9ff33c784c"
+    },
+    {
+      "path": "verification/evidence/verifier-build.log",
+      "sha256": "6e5c1a656d9bc39ff86b3494d4483abd7398112658ace8386fa74a897abbe83b"
+    },
+    {
+      "path": "verification/evidence/verifier-test.log",
+      "sha256": "c6f86519aa472a2b8830f930affd406d936fe109a5444fe1f760f7cb2b85d552"
+    },
+    {
+      "path": "verification/evidence/verifier-echo_server.log",
+      "sha256": "748716dc3ad530a098efb8da0d4df7c602f0143fef09a4512aa106504ce78b82"
+    },
+    {
+      "path": "verification/evidence/verifier-echo_client.log",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    }
+  ],
+  "notes": "Independent verifier re-run in worktree hake on branch u3-verify (== origin/pangpang778/gnet-rust-rewrite @ 7fdc2d4). Fresh checkout had CRLF line endings on .gitignore and .audit/execution.tsv (core.autocrlf=true); normalized those two metadata files to LF to reproduce revision sha256:f2a8effd... exactly — all 16 gnet-rs source/test/example files hashed identically without modification. cargo build exit 0 (6 dead-code warnings, same as engineer). cargo test exit 0: 18 unit + 2 integration pass, 1 doc-test ignored. Echo E2E re-run: server on tcp://127.0.0.1:9000 echoed test123 (7 bytes) back, client printed 'ok'. Engineer receipt validated exit 0 against its queenfish workspace. Dual-socket-handle fix confirmed in conn.rs: read_once/write_vectored prefer conn.mio_tcp (poll-registered handle) over conn.stream. NOTE: .audit/execution.tsv is part of the f2a8effd revision manifest (sha256 22de86f5); verifier audit rows were appended after this receipt was validated, so re-validating this receipt after that append will report an audit.tsv hash mismatch — the code revision itself is unchanged."
+}
